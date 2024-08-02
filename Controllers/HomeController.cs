@@ -7,7 +7,6 @@ namespace HaberOtesi.Controllers
 {
     public class HomeController : Controller
     {
-        string connectionString = "Server=104.247.162.242\\MSSQLSERVER2019;Initial Catalog=bariscak_haber;User Id=bariscak_haberler;Password=!Idw91p59; TrustServerCertificate=True";
 
         public IActionResult Login(string? redirectUrl)
         {
