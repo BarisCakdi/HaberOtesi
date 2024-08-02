@@ -1,0 +1,22 @@
+﻿@model Haber
+
+
+@if (ViewBag.mesaj != null)
+{
+    <h1>@ViewBag.mesaj</h1>
+}
+else 
+{
+    <h1>@Model.Title</h1>
+
+    @if (!string.IsNullOrEmpty(Model.ImagePath))
+    {
+        <img src="~/uploads/@Model.ImagePath" alt="@Model.Title" class="img-fluid" />
+    }
+
+    <p>@Model.Writing</p>
+
+    <p><strong>Oluşturulma Tarihi:</strong> @Model.CreatedDate.ToString("dd MMMM yyyy")</p>
+} 
+
+<a href="@Url.Action("index","home")" class="btn btn-primary">Ana Sayfaya Dön</a>

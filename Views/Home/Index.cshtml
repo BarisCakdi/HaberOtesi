@@ -1,0 +1,16 @@
+﻿@model List<Haber>
+
+
+@foreach (var post in Model)
+{
+<div class="card" style="width: 18rem;">
+  <img src="/uploads/@post.ImagePath" class="card-img-top" alt="@post.Title">
+  <div class="card-body">
+    <h5 class="card-title">@post.Title</h5>
+    <p class="card-text">@post.Writing</p>
+    <p class="card-text">@post.CreatedDate.ToString("dd.MM.yyyy")</p>
+    <a href="/@post.Slug" class="btn btn-primary">Detaylar</a>
+  </div>
+</div>
+    
+}

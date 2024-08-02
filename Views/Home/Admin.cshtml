@@ -1,0 +1,46 @@
+﻿@model List<Haber>
+
+@if (ViewBag.mesaj != null)
+{
+    <div class="alert alert-danger mb-3" role="alert">
+        @ViewBag.mesaj
+    </div>
+}
+else
+{
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th>İlan</th>
+                <th>Düzenle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var posts in Model)
+            {
+                <tr>
+                    <form method="post" action="/home/edit" enctype="multipart/form-data" class="d-inline-block">
+                    <td>
+                        <input type="text" class="form-control mb-2" name="Title" value="@posts.Title" placeholder="Haber başlık">
+                        <input type="file" class="form-control mb-2" name="Img">
+                        <input type="hidden" name="ExistingImagePath" value="@posts.ImagePath">
+                        <input type="hidden" name="slug" value="@posts.Slug">
+                        <input type="hidden" name="Id" value="@posts.Id">
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-warning">Düzenle</button>
+                    </td>
+                    </form>
+
+                    <td>
+                        <form method="post" action="/home/delete" class="d-inline-block ml-2">
+                            <input type="hidden" name="slug" value="@posts.Slug">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Emin misin?')">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
